@@ -1,6 +1,6 @@
 FROM docker.artifactory.weedon.org.au/redwyvern/valheim-server:latest
 
-ARG VHP_VERSION=0.9.6
+ARG VHP_VERSION=0.9.7
 
 USER root
 COPY vhserver-default.cfg /opt/vhserver/lgsm/config-lgsm/vhserver/vhserver.cfg
