@@ -13,9 +13,8 @@ RUN cd /opt/vhserver/serverfiles && \
     tar -xzpsf ./UnixServer.tar.gz && \
     rm UnixServer.tar.gz
 
-# Move the Valheim+ config file to a persistent volume and replace with a symlink 
-RUN cp /opt/vhserver/serverfiles/BepInEx/config/valheim_plus.cfg /opt/vhserver/lgsm/config-lgsm/vhserver && \
-    rm /opt/vhserver/serverfiles/BepInEx/config/valheim_plus.cfg && \
+# Create an empty Valheim+ config file in the persistent config volume mapped folder and create a symlink to it from where VH+ expects it to be
+RUN touch /opt/vhserver/lgsm/config-lgsm/vhserver/valheim_plus.cfg && \
     ln -s /opt/vhserver/lgsm/config-lgsm/vhserver/valheim_plus.cfg /opt/vhserver/serverfiles/BepInEx/config/valheim_plus.cfg
 
 # Patch a erroneous line in the VH+ startup script
